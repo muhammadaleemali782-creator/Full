@@ -40,6 +40,12 @@ import CoinWallet from "./pages/CoinWallet"
 import MyCommission from "./pages/MyCommission"
 import MyNetwork from "./pages/MyNetwork"
 
+// ⭐⭐⭐ NEW PPC SYSTEM PAGES
+import PPCWallet from "./pages/PPCWallet"
+import WithdrawalRequest from "./pages/WithdrawalRequest"
+import AdminPPCSettings from "./pages/AdminPPCSettings"
+import AdminWithdrawalManagement from "./pages/AdminWithdrawalManagement"
+
 import MyProfile from "./pages/MyProfile"
 
 // ================= CONTEXTS =================
@@ -173,6 +179,48 @@ function AppContent() {
         case "my-network":
           if (!loggedIn) return <Login setPage={setPage} />
           return <MyNetwork />
+
+        // ⭐⭐⭐ NEW ================= PPC WALLET =================
+        case "ppc-wallet":
+          if (!loggedIn) return <Login setPage={setPage} />
+          return <PPCWallet />
+
+        // ⭐⭐⭐ NEW ================= WITHDRAWAL REQUEST =================
+        case "withdrawal-request":
+          if (!loggedIn) return <Login setPage={setPage} />
+          if (!["distributor", "seller"].includes(role)) {
+            return (
+              <div className="bg-white p-6 rounded shadow text-red-600 font-semibold">
+                🚫 Only Distributor and Seller can request withdrawal
+              </div>
+            )
+          }
+          return <WithdrawalRequest />
+
+        // ⭐⭐⭐ NEW ================= ADMIN PPC SETTINGS =================
+        case "admin-ppc-settings":
+          if (!loggedIn) return <Login setPage={setPage} />
+          if (role !== "admin") {
+            return (
+              <div className="bg-white p-6 rounded shadow text-red-600 font-semibold">
+                🚫 Unauthorized Access — Admin Only
+              </div>
+            )
+          }
+          return <AdminPPCSettings />
+
+        // ⭐⭐⭐ NEW ================= ADMIN WITHDRAWAL MANAGEMENT =================
+        case "admin-withdrawal-management":
+          if (!loggedIn) return <Login setPage={setPage} />
+          if (role !== "admin") {
+            return (
+              <div className="bg-white p-6 rounded shadow text-red-600 font-semibold">
+                🚫 Unauthorized Access — Admin Only
+              </div>
+            )
+          }
+          return <AdminWithdrawalManagement />
+
 
         // ================= DASHBOARD =================
         case "dashboard":

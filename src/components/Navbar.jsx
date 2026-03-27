@@ -48,24 +48,29 @@ export default function Navbar({ setPage, cartCount }) {
     { label:"Commission Levels",  page:"admin-commission-levels",color:"#1d4ed8" },
     { label:"Coin Wallet",        page:"admin-coin-wallet",      color:"#65a30d" },
     { label:"Password Reset",     page:"admin-password-reset",   color:"#b91c1c" },
+    { label:"💰 PPC Settings",    page:"admin-ppc-settings",     color:"#9333ea" },
+    { label:"💳 Withdrawals",     page:"admin-withdrawal-management", color:"#ea580c" },
     { label:"📧 Email Settings",  page:"email-settings",         color:"#4f46e5" },
     { label:"Orders",             page:"admin-orders",           color:"#0f766e" },
     { label:"Created Users",      page:"my-users",               color:"#0d9488" },
   ]
 
   const distSellerBtns = [
-    { label:"Create User",   page:"create-seller",     color:"#16a34a" },
+    { label:"Create User",   page:"create-seller",        color:"#16a34a" },
+    { label:"Request User",  page:"raise-request",        color:"#ea580c" },
+    { label:"My Commission", page:"my-commission",        color:"#0891b2" },
+    { label:"My Network",    page:"my-network",           color:"#7c3aed" },
+    { label:"My Coins",      page:"coin-wallet",          color:"#ca8a04" },
+    { label:"💰 PPC Wallet", page:"ppc-wallet",           color:"#9333ea" },
+    { label:"💸 Withdrawal", page:"withdrawal-request",   color:"#16a34a" },
+  ]
+
+  const userBtns = [
     { label:"Request User",  page:"raise-request",     color:"#ea580c" },
     { label:"My Commission", page:"my-commission",     color:"#0891b2" },
     { label:"My Network",    page:"my-network",        color:"#7c3aed" },
     { label:"My Coins",      page:"coin-wallet",       color:"#ca8a04" },
-  ]
-
-  const userBtns = [
-    { label:"Request User",  page:"raise-request",  color:"#ea580c" },
-    { label:"My Commission", page:"my-commission",  color:"#0891b2" },
-    { label:"My Network",    page:"my-network",     color:"#7c3aed" },
-    { label:"My Coins",      page:"coin-wallet",    color:"#ca8a04" },
+    { label:"💰 PPC Wallet", page:"ppc-wallet",        color:"#9333ea" },
   ]
 
   /* Bottom nav items per role */
