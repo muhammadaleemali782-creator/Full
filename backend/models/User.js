@@ -151,6 +151,58 @@ const userSchema = new mongoose.Schema(
     },
 
     /* =====================================================
+       ⭐ NEW PPC WALLET SYSTEM (MULTI-WALLET)
+    ===================================================== */
+    
+    // DISTRIBUTOR WALLETS (2 wallets)
+    distributorWallet: {
+      type: Number,
+      default: 0,
+      min: 0
+      // Non-withdrawable, for promotion only
+      // Earns from all downline distributors + their networks
+    },
+
+    sellerWallet: {
+      type: Number,
+      default: 0,
+      min: 0
+      // Withdrawable (admin approval required)
+      // Distributor earns from directly connected sellers + their networks
+    },
+
+    // SELLER WALLETS (2 wallets)
+    sellerWalletAsSeller: {
+      type: Number,
+      default: 0,
+      min: 0
+      // Withdrawable
+      // Seller earns from sellers below them
+    },
+
+    userWalletAsSeller: {
+      type: Number,
+      default: 0,
+      min: 0
+      // Withdrawable
+      // Seller earns from users below them
+    },
+
+    /* =====================================================
+       ⭐ PPC TRACKING
+    ===================================================== */
+    totalPPCEarned: {
+      type: Number,
+      default: 0
+    },
+
+    totalWithdrawn: {
+      type: Number,
+      default: 0
+    },
+
+
+    /* =====================================================
        ⭐ PROMOTION + ACCOUNT CONTROL
     ===================================================== */
 

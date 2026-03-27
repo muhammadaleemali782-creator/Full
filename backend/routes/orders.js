@@ -4,6 +4,8 @@ import allowRoles from "../middleware/allowRoles.js"
 import Order from "../models/Order.js"
 import User from "../models/User.js"
 import { createCommissionFromOrder } from "../commission/commission.controller.js"
+import { createPPCCommissionFromOrder } from "../commission/ppcCommission.controller.js"  // ⭐ NEW PPC SYSTEM
+
 import commissionRoutes from "../commission/commission.routes.js"
 import mongoose from "mongoose"
 
@@ -273,15 +275,15 @@ router.put("/admin/confirm/:id", auth, allowRoles("admin"), async (req, res) => 
 
     await order.save()
 
-    // Commission
+    // ⭐ NEW PPC COMMISSION SYSTEM (replaces old commission)
     try {
       if (order.total && !order._commissionDone) {
-        await createCommissionFromOrder(order)
+        await createPPCCommissionFromOrder(order)  // ⭐ NEW PPC system
         order._commissionDone = true
         await order.save()
       }
     } catch (err) {
-      console.error("❌ COMMISSION ERROR:", err.message)
+      console.error("❌ PPC COMMISSION ERROR:", err.message)
     }
 
     // Seller sales update

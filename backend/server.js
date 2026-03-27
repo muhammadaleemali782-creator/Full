@@ -50,6 +50,12 @@ import usersRoutes from "./routes/users.js"   // ⭐ EXACT PATH
 import userIdRoutes from "./routes/userIdRoutes.js"
 import { generateUserId } from "./utils/generateUserId.js"
 
+// ⭐ NEW PPC SYSTEM IMPORTS
+import withdrawalRoutes from "./routes/withdrawal.routes.js"
+import ppcSettingsRoutes from "./routes/ppcSettings.routes.js"
+import { createPPCCommissionFromOrder, getMyPPCWallet } from "./commission/ppcCommission.controller.js"
+
+
 /* =====================================================
    APP INIT
 ===================================================== */
@@ -61,6 +67,12 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use("/orders", orderRoutes)
+
+// ⭐ NEW PPC SYSTEM ROUTES
+app.use("/api/withdrawal", withdrawalRoutes)
+app.use("/api/ppc-settings", ppcSettingsRoutes)
+app.get("/api/ppc/wallet/me", protect, getMyPPCWallet)
+
 app.use("/users", usersRoutes)
 app.use("/users",userIdRoutes)
 
